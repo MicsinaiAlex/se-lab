@@ -27,21 +27,22 @@ public class TorpedoStore {
       }
     }
   }
-
+  //Hogy ne kelljen töbször megírni és hogy csak az adott fájl függvényei lásák.
+  private Random generator = new Random();
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
-      new IllegalArgumentException("numberOfTorpedos");
+      throw new IllegalArgumentException("numberOfTorpedos");
     }
 
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
-    Random generator = new Random();
+    
     double r = generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
       // successful firing
-      this.torpedoCount =- numberOfTorpedos;
+      this.torpedoCount -= numberOfTorpedos;
       success = true;
     } else {
       // simulated failure
