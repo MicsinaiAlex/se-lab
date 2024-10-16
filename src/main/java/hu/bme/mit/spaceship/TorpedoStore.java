@@ -27,7 +27,7 @@ public class TorpedoStore {
       }
     }
   }
-
+  //Hogy ne kelljen töbször megírni és hogy csak az adott fájl függvényei lásák.
   private Random generator = new Random();
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
